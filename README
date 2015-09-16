@@ -1,0 +1,7 @@
+Chromebook Noble client for TI Sensor Tag Simple Key Service
+
+WARNING - this doesn't work yet
+
+Discover fails unless using UUID, CC2451 doesn't advertise UUID
+
+Notify not implemented in Chrome or the (forked version) of Noble.
