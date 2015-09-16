@@ -18,35 +18,36 @@ function doScan(){
   console.log("doScan");
   $('#progress').show();
   // SensorTag CC2451 does not advertise any services
-  noble.startScanning();
+  //noble.startScanning();
 
   // SensorTag CC2650 advertises (but does not provide) AA10
   //noble.startScanning(['AA10'], false);
   //noble.startScanning(['0000AA10-0000-1000-8000-00805F9B34FB'], false);
 
   // FakeSensorTag can advertise the simple key service
-  //noble.startScanning(['FFE0'], false);
-  noble.startScanning(['0000FFE0-0000-1000-8000-00805F9B34FB'], false);
+  // ffe0 - chrome wants the long UUID version and insists on lower case
+  noble.startScanning(['0000ffe0-0000-1000-8000-00805f9b34fb'], false);
 
 }
 
 noble.on('discover', function(peripheral) {
-
-  var localName = peripheral.advertisement.localName;
+    console.log(peripheral);
+ // advertising data or local name is not implemented
+ //  var localName = peripheral.advertisement.localName;
 
   // find SensorTag based on local name
-  if (localName && localName.match(/Sensor/)) {
+//  if (localName && localName.match(/Sensor/)) {
     noble.stopScanning();
     $('#progress').hide();
-    console.log('Attempting to connect to ' + localName);
+    console.log('Attempting to connect'); // to ' + localName);
     connectAndSetUpSensorTag(peripheral);
-  }
+//  }
 });
 
 function connectAndSetUpSensorTag(peripheral) {
-
+  console.log("connectAndSetUpSensorTag");
   peripheral.connect(function(error) {
-    console.log('Connected to ' + peripheral.advertisement.localName);
+    console.log('Connected to ' + peripheral); //.advertisement.localName);
     if (error) {
       console.log('There was an error connecting ' + error);
       return;
@@ -68,7 +69,7 @@ function onDisconnect() {
 }
 
 function onServicesAndCharacteristicsDiscovered(error, services, characteristics) {
-
+  console.log('onServicesAndCharacteristicsDiscovered');
   if (error) {
     console.log('Error discovering services and characteristics ' + error);
     return;
