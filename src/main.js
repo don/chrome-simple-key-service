@@ -21,12 +21,11 @@ function doScan(){
   //noble.startScanning();
 
   // SensorTag CC2650 advertises (but does not provide) AA10
-  //noble.startScanning(['AA10'], false);
-  //noble.startScanning(['0000AA10-0000-1000-8000-00805F9B34FB'], false);
+  noble.startScanning(['0000aa10-0000-1000-8000-00805f9b34fb'], false);
 
   // FakeSensorTag can advertise the simple key service
   // ffe0 - chrome wants the long UUID version and insists on lower case
-  noble.startScanning(['0000ffe0-0000-1000-8000-00805f9b34fb'], false);
+  // noble.startScanning(['0000ffe0-0000-1000-8000-00805f9b34fb'], false);
 
 }
 
