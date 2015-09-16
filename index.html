@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SensorTag - Simple Key Service</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.indigo-pink.min.css">
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+  <div id="greeting"></div>
+
+  <div class="scan">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="scanButton">
+      Scan
+    </button><br>
+    <div id="progress" class="mdl-progress mdl-js-progress mdl-progress__indeterminate progress" style="display: none;"></div>
+  </div>
+
+  <div id="buttonState"></div>
+  <script src="dist/main.js"></script>
+</body>
